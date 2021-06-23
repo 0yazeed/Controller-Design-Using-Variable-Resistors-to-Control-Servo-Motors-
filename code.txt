@@ -1,0 +1,71 @@
+#include <Servo.h>
+
+Servo aservo1;
+Servo aservo2;
+Servo aservo3;
+Servo aservo4;
+Servo aservo5;
+int i1,i2,i3,i4,i5;
+
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  aservo1.attach(11);
+  aservo2.attach(10);
+  aservo3.attach(9);
+  aservo4.attach(6);
+  aservo5.attach(5);
+  
+  //start point 90 degree
+  aservo1.write(90);
+  aservo2.write(90);
+  aservo3.write(90);
+  aservo4.write(90);
+  aservo5.write(90);
+  delay(3000);
+  
+  
+  //declaration of a variable resistor
+  pinMode(A0,INPUT);
+  pinMode(A1,INPUT);
+  pinMode(A2,INPUT);
+  pinMode(A3,INPUT);
+  pinMode(A4,INPUT);
+  
+}
+
+void loop()
+{
+  
+  i1=analogRead(A0);
+  i2=analogRead(A1);
+  i3=analogRead(A2);
+  i4=analogRead(A3);
+  i5=analogRead(A4);
+  
+  i1=map(i1,0,1023,0,180);
+  i2=map(i2,0,1023,0,180);
+  i3=map(i3,0,1023,0,180);
+  i4=map(i4,0,1023,0,180);
+  i5=map(i5,0,1023,0,180);
+ 
+  
+  
+  //print the value for test
+  Serial.println(i1);
+  Serial.println(i2);
+  Serial.println(i3);
+  Serial.println(i4);
+  Serial.println(i5);
+ 
+  //send value to servo
+  aservo1.write(i1);
+  aservo2.write(i2);
+  aservo3.write(i3);
+  aservo4.write(i4);
+  aservo5.write(i5);
+}
