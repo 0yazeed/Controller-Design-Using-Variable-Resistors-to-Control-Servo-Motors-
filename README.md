@@ -18,7 +18,7 @@ Input Ports :
 
 
 
-In The Second Step, I modified the Input values using function i=(analogRead(A0)-10)*0.18 to match the degree scale for the servo. 
+In The Second Step, I modified the Input values using map function to match the degree scale for the servo. 
 
 
 
